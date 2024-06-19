@@ -71,13 +71,16 @@ class _HomePageState extends State<HomePage> {
                                   left: 40,
                                   child: Row(
                                     children: [
-                                      HexagonWidget.flat(
-                                        width: 100,
-                                        child: AspectRatio(
-                                          aspectRatio: HexagonType.FLAT.ratio,
-                                          child: Image.asset(
-                                            'assets/images/profile.png',
-                                            fit: BoxFit.contain,
+                                      InkWell(
+                                        onTap: () {},
+                                        child: HexagonWidget.flat(
+                                          width: 100,
+                                          child: AspectRatio(
+                                            aspectRatio: HexagonType.FLAT.ratio,
+                                            child: Image.asset(
+                                              'assets/images/profile.png',
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -124,7 +127,21 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10),
                         child: Row(
                           children: [
-                            Expanded(child: TextField()),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey, width: 1.0),
+                                  borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(10, 10)),
+                                ),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Enter text...',
+                                  ),
+                                ),
+                              ),
+                            ),
                             HexagonWidget.flat(
                               width: 60,
                               color: ColorResource.lightBlack,
