@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+import 'package:slash_tribe/presentations/auth/sign_in/login.dart';
 
 import '../../../utils/color.dart';
 
@@ -38,12 +39,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Align(
-                      heightFactor: height * .001,
+                      heightFactor: height * .0009,
                       alignment: Alignment.topLeft,
                       child: Transform.translate(
                         offset: const Offset(-60, -90),
                         child: Transform.rotate(
-                          angle: .5,
+                          angle: 1.3,
                           child: Opacity(
                             opacity: 0.2,
                             child: Image.asset(
@@ -205,7 +206,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Align(
                             alignment: Alignment.center,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ),
+                                );
+                              },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -228,20 +236,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Image.asset(
-                              "assets/images/bottomblacklogo.png",
-                              width: 50,
-                            ),
-                          ),
-                          SizedBox(height: 10,)
                         ],
                       ),
                     ),
+                    Align(
+                      heightFactor: height * .0002,
+                      alignment: Alignment.topRight,
+                      child: Transform.translate(
+                        offset: const Offset(25, -30),
+                        child: Transform.rotate(
+                          angle: 3.2,
+                          child: Opacity(
+                            opacity: 0.2,
+                            child: Image.asset(
+                              "assets/images/blackhexagon.png",
+                              width: 200,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Image.asset(
+                        "assets/images/bottomblacklogo.png",
+                        width: 50,
+                      ),
+                    ),
+                    SizedBox(height: 10,)
                   ],
                 ),
               )

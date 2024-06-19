@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+import 'package:slash_tribe/presentations/auth/sign_up/sign_up.dart';
+import 'package:slash_tribe/presentations/forget/forget_password.dart';
+import 'package:slash_tribe/presentations/home_screen/homepage.dart';
 
 import '../../../utils/color.dart';
 
@@ -113,7 +116,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: double.infinity,
                             height: 40,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                              },
                               style: ButtonStyle(
                                 backgroundColor:
                                 MaterialStateProperty.all<Color>(
@@ -158,7 +163,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Align(
                             alignment: Alignment.center,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+                              },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -188,7 +195,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Align(
                             alignment: Alignment.center,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword()));
+                              },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
