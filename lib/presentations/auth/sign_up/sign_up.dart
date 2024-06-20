@@ -264,7 +264,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: 50,
                       ),
                     ),
-                    SizedBox(height: 10,)
+                    SizedBox(height: 10)
                   ],
                 ),
               )

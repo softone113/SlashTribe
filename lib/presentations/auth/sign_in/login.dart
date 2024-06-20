@@ -14,10 +14,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Track whether the password is currently visible or hidden
   bool _isPasswordVisible = false;
-
-  // Controller for the password TextField
   TextEditingController _passwordController = TextEditingController();
 
   @override
