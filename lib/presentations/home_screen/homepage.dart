@@ -3,8 +3,6 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexagon/hexagon.dart';
-import 'package:shape_maker/shape_maker.dart';
-import 'package:shape_maker/shape_maker_painter.dart';
 import 'package:slash_tribe/utils/color.dart';
 
 class HomePage extends StatefulWidget {
@@ -128,75 +126,88 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: ClipPath(
-                              clipper: _Hexagon(),
-                              child: Container(
-                                color: ColorResource.lightBlack,
-                                height: 60,
-                                padding: EdgeInsets.all(5),
-                                child: ClipPath(
-                                  clipper: _Hexagons(),
-                                  child: Container(
-                                    color: ColorResource.whiteColor,
-                                    height: 58,
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        filled: true,
-                                        hintText: 'Enter text...',
-                                        contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Stack(
+                                children: [
+                                  ClipPath(
+                                    clipper: _Hexagon(),
+                                    child: Container(
+                                      height: 60,
+                                      padding: EdgeInsets.all(5),
+                                      color: ColorResource.lightBlack,
+                                      child: ClipPath(
+                                        clipper: _Hexagons(),
+                                        child: Container(
+                                          color: ColorResource.whiteColor,
+                                          child: Row(
+                                            children: [
+                                              Expanded(child: TextField(
+                                                decoration: InputDecoration(
+                                                  border: InputBorder.none,
+                                                  hintText: 'Enter text...',
+                                                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                                                ),
+                                              ),),
+                                              Padding(
+                                                padding: const EdgeInsets.only(bottom: 4.0,right: 12),
+                                                child: HexagonWidget.flat(
+                                                  width: 60,
+                                                  color: ColorResource.lightBlack,
+                                                  child: HexagonWidget.flat(
+                                                    width: 50,
+                                                    color: ColorResource.whiteColor,
+                                                    child: Center(
+                                                      child: Icon(Icons.mic, size: 30),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ),),
-                            GestureDetector(
-                              onTap: (){},
-                              child: HexagonWidget.flat(
-                                width: 60,
-                                color: ColorResource.lightBlack,
-                                child: HexagonWidget.flat(
-                                  width: 50,
-                                  color: ColorResource.whiteColor,
-                                  child: Center(
-                                    child: Icon(Icons.mic, size: 30),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 2),
-                              child: Transform.rotate(
-                                angle: 0.5,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 5),
-                                  height: 60,
-                                  width: 5,
-                                  decoration: BoxDecoration(
-                                      color: ColorResource.orangeColor,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.elliptical(20, 10),
-                                          topLeft: Radius.elliptical(20, 10))),
-                                ),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: (){},
-                              child: HexagonWidget.flat(
-                                width: 60,
-                                color: ColorResource.lightBlack,
-                                child: HexagonWidget.flat(
-                                  width: 50,
-                                  color: ColorResource.whiteColor,
-                                  child: Center(
-                                    child: Text(
-                                      "GO",
-                                      style: TextStyle(
-                                        color: ColorResource.lightBlack,
-                                        fontFamily: 'FontMain',
-                                        fontWeight: FontWeight.bold,
+                                  Positioned(
+                                    right: 0,
+                                    child: Transform.rotate(
+                                      angle: 0.55,
+                                      child: Container(
+                                        margin: EdgeInsets.symmetric(horizontal: 2),
+                                        decoration: BoxDecoration(
+                                            color: ColorResource.whiteColor,
+                                            borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.elliptical(50, 0),
+                                                bottomRight: Radius.elliptical(50, 0),
+                                                topRight: Radius.elliptical(50, 0),
+                                                topLeft: Radius.elliptical(60, 10))),
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(horizontal: 5),
+                                          height: 60,
+                                          width: 5,
+                                          decoration: BoxDecoration(
+                                              color: ColorResource.orangeColor,
+                                              borderRadius: BorderRadius.only(
+                                                  bottomRight: Radius.elliptical(20, 10),
+                                                  topLeft: Radius.elliptical(20, 10))),
+                                        ),
                                       ),
+                                    ),)
+                                ],
+                              ),
+                            ),
+                            HexagonWidget.flat(
+                              width:60,
+                              color: ColorResource.lightBlack,
+                              child: HexagonWidget.flat(
+                                width: 50,
+                                color: ColorResource.whiteColor,
+                                child: Center(
+                                  child: Text(
+                                    "GO",
+                                    style: TextStyle(
+                                      color: ColorResource.lightBlack,
+                                      fontFamily: 'FontMain',
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
@@ -205,100 +216,6 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      // Container(
-                      //   width: width,
-                      //   padding: EdgeInsets.symmetric(horizontal: 10),
-                      //   child: Row(
-                      //     children: [
-                      //       Expanded(
-                      //         child: Container(
-                      //           padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      //           decoration: BoxDecoration(
-                      //             border: Border.all(
-                      //                 color: Colors.grey, width: 1.0),
-                      //             borderRadius: BorderRadius.only(
-                      //                 bottomLeft: Radius.elliptical(10, 10)),
-                      //           ),
-                      //           child: TextField(
-                      //             decoration: InputDecoration(
-                      //               border: InputBorder.none,
-                      //               hintText: 'Enter text...',
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         decoration: BoxDecoration(
-                      //             color: ColorResource.lightBlack,
-                      //             borderRadius: BorderRadius.circular(50)),
-                      //         child: Row(
-                      //           children: [
-                      //             HexagonWidget.flat(
-                      //               width: 60,
-                      //               color: ColorResource.lightBlack,
-                      //               child: HexagonWidget.flat(
-                      //                 width: 50,
-                      //                 color: ColorResource.whiteColor,
-                      //                 child: Center(
-                      //                   child: Icon(Icons.mic, size: 30),
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             Transform.rotate(
-                      //               angle: 0.5,
-                      //               child: Container(
-                      //                 margin:
-                      //                     EdgeInsets.symmetric(horizontal: 2),
-                      //                 decoration: BoxDecoration(
-                      //                     color: ColorResource.whiteColor,
-                      //                     borderRadius: BorderRadius.only(
-                      //                         bottomLeft:
-                      //                             Radius.elliptical(50, 0),
-                      //                         bottomRight:
-                      //                             Radius.elliptical(50, 0),
-                      //                         topRight:
-                      //                             Radius.elliptical(50, 0),
-                      //                         topLeft:
-                      //                             Radius.elliptical(60, 10))),
-                      //                 child: Container(
-                      //                   margin:
-                      //                       EdgeInsets.symmetric(horizontal: 5),
-                      //                   height: 60,
-                      //                   width: 5,
-                      //                   decoration: BoxDecoration(
-                      //                       color: ColorResource.orangeColor,
-                      //                       borderRadius: BorderRadius.only(
-                      //                           bottomRight:
-                      //                               Radius.elliptical(20, 10),
-                      //                           topLeft:
-                      //                               Radius.elliptical(20, 10))),
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             HexagonWidget.flat(
-                      //               width: 60,
-                      //               color: ColorResource.lightBlack,
-                      //               child: HexagonWidget.flat(
-                      //                 width: 50,
-                      //                 color: ColorResource.whiteColor,
-                      //                 child: Center(
-                      //                   child: Text(
-                      //                     "GO",
-                      //                     style: TextStyle(
-                      //                       color: ColorResource.lightBlack,
-                      //                       fontFamily: 'FontMain',
-                      //                       fontWeight: FontWeight.bold,
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       )
-                      //     ],
-                      //   ),
-                      // ),
                       SizedBox(
                         height: 15,
                       ),
@@ -554,13 +471,13 @@ class _Hexagon extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.lineTo(size.width*.05, 0);
-    path.lineTo(size.width*.95, 0);
-    path.lineTo(size.width, size.height*sqrt(3)/4);
-    path.lineTo(size.width*0.95, size.height*sqrt(3)/2);
-    path.lineTo(size.width*0.05, size.height*sqrt(3)/2);
-    path.lineTo(0, size.height*sqrt(3)/4);
-    path.lineTo(size.width*0.05,0);
+    path.lineTo(size.width * .05, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width * .91, size.height * .85);
+    path.lineTo(size.width * 0.8, size.height * sqrt(3) / 2);
+    path.lineTo(size.width * 0.05, size.height * sqrt(3) / 2);
+    path.lineTo(0, size.height * sqrt(3) / 4);
+    path.lineTo(size.width * 0.05, 0);
     path.close();
     return path;
   }
@@ -574,8 +491,8 @@ class _Hexagons extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
     path.lineTo(size.width*.05, 0);
-    path.lineTo(size.width*.95, 0);
-    path.lineTo(size.width, size.height*sqrt(3)/4);
+    path.lineTo(size.width*.9, 0);
+    path.lineTo(size.width, size.height*.75);
     path.lineTo(size.width*0.95, size.height*sqrt(3)/2);
     path.lineTo(size.width*0.05, size.height*sqrt(3)/2);
     path.lineTo(0, size.height*sqrt(3)/4);
