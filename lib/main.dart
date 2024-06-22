@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:slash_tribe/presentations/splash/splash_screen.dart';
-import 'package:slash_tribe/testWork/shapeScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: false,
       ),
-      home: ShapeScreen(),
+      home: SplashScreen(),
     );
   }
 }

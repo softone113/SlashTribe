@@ -104,12 +104,12 @@ class _GoButtonOuterShape extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.lineTo(size.width*.25, 0);
-    path.lineTo(size.width * .75, 0);
+    path.lineTo(size.width*.4, 0);
+    path.lineTo(size.width * .8, 0);
     path.lineTo(size.width, size.height*.5);
-    path.lineTo(size.width*.75, size.height);
+    path.lineTo(size.width*.8, size.height);
     path.lineTo(0, size.height);
-    path.lineTo(size.width*.25, 0);
+    path.lineTo(size.width*.4, 0);
     path.close();
     return path;
   }

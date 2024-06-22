@@ -123,96 +123,136 @@ class _HomePageState extends State<HomePage> {
                         width: width,
                         padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Expanded(
                               child: Stack(
                                 children: [
-                                  ClipPath(
-                                    clipper: _Hexagon(),
+                                 Container(
+                                   width: width*.8,
+                                   child:  Stack(
+                                     children: [
+                                       ClipPath(
+                                         clipper: _Hexagon(),
+                                         child: Container(
+                                           height: 60,
+                                           padding: EdgeInsets.only(left: 5,right: 5,bottom: 6,top: 5),
+                                           color: ColorResource.lightBlack,
+                                           child: ClipPath(
+                                             clipper: _Hexagons(),
+                                             child: Container(
+                                               color: ColorResource.whiteColor,
+                                               child: Row(
+                                                 children: [
+                                                   Expanded(child: TextField(
+                                                     decoration: InputDecoration(
+                                                       border: InputBorder.none,
+                                                       hintText: 'Enter text...',
+                                                       contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                                                     ),
+                                                   ),),
+                                                   Padding(
+                                                     padding: const EdgeInsets.only(bottom: 4.0,right: 9),
+                                                     child: HexagonWidget.flat(
+                                                       width: 60,
+                                                       color: ColorResource.lightBlack,
+                                                       child: HexagonWidget.flat(
+                                                         width: 50,
+                                                         color: ColorResource.whiteColor,
+                                                         child: Center(
+                                                           child: Icon(Icons.mic, size: 30),
+                                                         ),
+                                                       ),
+                                                     ),
+                                                   ),
+                                                 ],
+                                               ),
+                                             ),
+                                           ),
+                                         ),
+                                       ),
+                                       Positioned(
+                                         right: 0,
+                                         child: Transform.rotate(
+                                           angle: 0.5,
+                                           child: Container(
+                                             margin: EdgeInsets.only(left: 2),
+                                             decoration: BoxDecoration(
+                                                 color: ColorResource.whiteColor,
+                                                 borderRadius: BorderRadius.only(
+                                                     bottomLeft: Radius.elliptical(50, 0),
+                                                     bottomRight: Radius.elliptical(50, 0),
+                                                     topRight: Radius.elliptical(50, 0),
+                                                     topLeft: Radius.elliptical(60, 10))),
+                                             child: Container(
+                                               margin: EdgeInsets.symmetric(horizontal: 4),
+                                               height: 55,
+                                               width: 5,
+                                               decoration: BoxDecoration(
+                                                   color: ColorResource.orangeColor,
+                                                   borderRadius: BorderRadius.only(
+                                                       bottomRight: Radius.elliptical(20, 10),
+                                                       topLeft: Radius.elliptical(20, 10))),
+                                             ),
+                                           ),
+                                         ),)
+                                     ],
+                                   ),
+                                 ),
+                                  Positioned(
+                                    right: 0,
+                                    child: ClipPath(
+                                    clipper: _hexagonOuter(),
                                     child: Container(
+                                      width: width*.17,
+                                      padding: EdgeInsets.only(left: 7,right: 5,top: 5,bottom: 8),
                                       height: 60,
-                                      padding: EdgeInsets.all(5),
-                                      color: ColorResource.lightBlack,
+                                      color: Colors.black87,
                                       child: ClipPath(
-                                        clipper: _Hexagons(),
+                                        clipper: _hexagon(),
                                         child: Container(
+                                          width: 60,
+                                          height: 60,
                                           color: ColorResource.whiteColor,
-                                          child: Row(
-                                            children: [
-                                              Expanded(child: TextField(
-                                                decoration: InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText: 'Enter text...',
-                                                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                                ),
-                                              ),),
-                                              Padding(
-                                                padding: const EdgeInsets.only(bottom: 4.0,right: 12),
-                                                child: HexagonWidget.flat(
-                                                  width: 60,
-                                                  color: ColorResource.lightBlack,
-                                                  child: HexagonWidget.flat(
-                                                    width: 50,
-                                                    color: ColorResource.whiteColor,
-                                                    child: Center(
-                                                      child: Icon(Icons.mic, size: 30),
-                                                    ),
-                                                  ),
-                                                ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 10, top: 10),
+                                            child: Text(
+                                              "GO",
+                                              style: TextStyle(
+                                                color: ColorResource.lightBlack,
+                                                fontFamily: 'FontMain',
+                                                fontWeight: FontWeight.bold,
                                               ),
-                                            ],
+                                              textAlign: TextAlign.center,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    right: 0,
-                                    child: Transform.rotate(
-                                      angle: 0.55,
-                                      child: Container(
-                                        margin: EdgeInsets.symmetric(horizontal: 2),
-                                        decoration: BoxDecoration(
-                                            color: ColorResource.whiteColor,
-                                            borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.elliptical(50, 0),
-                                                bottomRight: Radius.elliptical(50, 0),
-                                                topRight: Radius.elliptical(50, 0),
-                                                topLeft: Radius.elliptical(60, 10))),
-                                        child: Container(
-                                          margin: EdgeInsets.symmetric(horizontal: 5),
-                                          height: 60,
-                                          width: 5,
-                                          decoration: BoxDecoration(
-                                              color: ColorResource.orangeColor,
-                                              borderRadius: BorderRadius.only(
-                                                  bottomRight: Radius.elliptical(20, 10),
-                                                  topLeft: Radius.elliptical(20, 10))),
-                                        ),
-                                      ),
-                                    ),)
+                                  ),)
                                 ],
                               ),
                             ),
-                            HexagonWidget.flat(
-                              width:60,
-                              color: ColorResource.lightBlack,
-                              child: HexagonWidget.flat(
-                                width: 50,
-                                color: ColorResource.whiteColor,
-                                child: Center(
-                                  child: Text(
-                                    "GO",
-                                    style: TextStyle(
-                                      color: ColorResource.lightBlack,
-                                      fontFamily: 'FontMain',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+
+                            // HexagonWidget.flat(
+                            //   width:60,
+                            //   color: ColorResource.lightBlack,
+                            //   child: HexagonWidget.flat(
+                            //     width: 50,
+                            //     color: ColorResource.whiteColor,
+                            //     child: Center(
+                            //       child: Text(
+                            //         "GO",
+                            //         style: TextStyle(
+                            //           color: ColorResource.lightBlack,
+                            //           fontFamily: 'FontMain',
+                            //           fontWeight: FontWeight.bold,
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -465,7 +505,43 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+class _hexagon extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(size.width * .4, 0);
+    path.lineTo(size.width * .8, 0);
+    path.lineTo(size.width, size.height * .4);
+    path.lineTo(size.width * .8, size.height * .8);
+    path.lineTo(size.width * .4, size.height * .8);
+    path.lineTo(size.width * .2, size.height * .4);
+    path.lineTo(size.width * .4, 0);
+    path.close();
+    return path;
+  }
 
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+}
+
+class _hexagonOuter extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(size.width * .4, 0);
+    path.lineTo(size.width * .8, 0);
+    path.lineTo(size.width, size.height * .4);
+    path.lineTo(size.width * .8, size.height * .8);
+    path.lineTo(size.width * .4, size.height * .8);
+    path.lineTo(0, size.height * .8);
+    path.lineTo(size.width * .4, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+}
 
 class _Hexagon extends CustomClipper<Path> {
   @override
